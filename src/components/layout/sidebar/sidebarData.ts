@@ -1,25 +1,24 @@
 import {
-    Construction,
-    LayoutDashboard,
-    Monitor,
+    Bell,
     Bug,
-    ListTodo,
+    Command,
+    Construction,
     FileX,
     HelpCircle,
+    LayoutDashboard,
+    ListTodo,
     Lock,
-    Bell,
+    MessagesSquare,
+    Monitor,
     Package,
     Palette,
     ServerOff,
     Settings,
-    Wrench,
-    UserCog,
-    UserX,
-    Users,
-    MessagesSquare,
     ShieldCheck,
-    Command,
-    LockKeyhole
+    UserCog,
+    Users,
+    UserX,
+    Wrench
 } from 'lucide-react'
 import type {SidebarData} from "@/components/layout/sidebar/sidebar.types.ts";
 
@@ -63,20 +62,6 @@ export const sidebarData: SidebarData = {
                     title: 'Users',
                     url: '/users',
                     icon: Users,
-                },
-                {
-                    title: 'Authentication',
-                    icon: LockKeyhole,
-                    items: [
-                        {
-                            title: 'Sign In',
-                            url: '/auth/sign-in',
-                        },
-                        {
-                            title: 'Sign Up',
-                            url: '/auth/sign-up',
-                        },
-                    ],
                 },
             ],
         },
