@@ -31,7 +31,7 @@ export function Login({
 
     return (
         <AuthContainer>
-            <div className={cn("flex flex-col gap-6", className)} {...props}>
+            <div className={cn("flex flex-col gap-6 w-full", className)} {...props}>
                 <Card>
                     <CardHeader>
                         <CardTitle>Login to your account</CardTitle>
