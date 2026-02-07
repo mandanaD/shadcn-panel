@@ -77,20 +77,12 @@ export const sidebarData: SidebarData = {
                             url: '/login',
                         },
                         {
-                            title: 'Sign In (2 Col)',
-                            url: '/sign-in-2',
-                        },
-                        {
                             title: 'Sign Up',
                             url: '/sign-up',
                         },
                         {
                             title: 'Forgot Password',
                             url: '/forgot-password',
-                        },
-                        {
-                            title: 'OTP',
-                            url: '/otp',
                         },
                     ],
                 },
