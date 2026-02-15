@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
 import { Route as AuthenticatedUnauthorizedRouteImport } from './routes/_authenticated/unauthorized'
-import { Route as errors404RouteImport } from './routes/(errors)/404'
 import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
 import { Route as authLoginRouteImport } from './routes/(auth)/login'
 import { Route as authForgotPasswordRouteImport } from './routes/(auth)/forgot-password'
@@ -32,11 +31,6 @@ const AuthenticatedUnauthorizedRoute =
     path: '/unauthorized',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const errors404Route = errors404RouteImport.update({
-  id: '/(errors)/404',
-  path: '/404',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const authSignUpRoute = authSignUpRouteImport.update({
   id: '/(auth)/sign-up',
   path: '/sign-up',
@@ -58,14 +52,12 @@ export interface FileRoutesByFullPath {
   '/forgot-password': typeof authForgotPasswordRoute
   '/login': typeof authLoginRoute
   '/sign-up': typeof authSignUpRoute
-  '/404': typeof errors404Route
   '/unauthorized': typeof AuthenticatedUnauthorizedRoute
 }
 export interface FileRoutesByTo {
   '/forgot-password': typeof authForgotPasswordRoute
   '/login': typeof authLoginRoute
   '/sign-up': typeof authSignUpRoute
-  '/404': typeof errors404Route
   '/unauthorized': typeof AuthenticatedUnauthorizedRoute
   '/': typeof AuthenticatedIndexRoute
 }
@@ -75,34 +67,20 @@ export interface FileRoutesById {
   '/(auth)/forgot-password': typeof authForgotPasswordRoute
   '/(auth)/login': typeof authLoginRoute
   '/(auth)/sign-up': typeof authSignUpRoute
-  '/(errors)/404': typeof errors404Route
   '/_authenticated/unauthorized': typeof AuthenticatedUnauthorizedRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/forgot-password'
-    | '/login'
-    | '/sign-up'
-    | '/404'
-    | '/unauthorized'
+  fullPaths: '/' | '/forgot-password' | '/login' | '/sign-up' | '/unauthorized'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/forgot-password'
-    | '/login'
-    | '/sign-up'
-    | '/404'
-    | '/unauthorized'
-    | '/'
+  to: '/forgot-password' | '/login' | '/sign-up' | '/unauthorized' | '/'
   id:
     | '__root__'
     | '/_authenticated'
     | '/(auth)/forgot-password'
     | '/(auth)/login'
     | '/(auth)/sign-up'
-    | '/(errors)/404'
     | '/_authenticated/unauthorized'
     | '/_authenticated/'
   fileRoutesById: FileRoutesById
@@ -112,7 +90,6 @@ export interface RootRouteChildren {
   authForgotPasswordRoute: typeof authForgotPasswordRoute
   authLoginRoute: typeof authLoginRoute
   authSignUpRoute: typeof authSignUpRoute
-  errors404Route: typeof errors404Route
 }
 
 declare module '@tanstack/react-router' {
@@ -137,13 +114,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/unauthorized'
       preLoaderRoute: typeof AuthenticatedUnauthorizedRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/(errors)/404': {
-      id: '/(errors)/404'
-      path: '/404'
-      fullPath: '/404'
-      preLoaderRoute: typeof errors404RouteImport
-      parentRoute: typeof rootRouteImport
     }
     '/(auth)/sign-up': {
       id: '/(auth)/sign-up'
@@ -187,7 +157,6 @@ const rootRouteChildren: RootRouteChildren = {
   authForgotPasswordRoute: authForgotPasswordRoute,
   authLoginRoute: authLoginRoute,
   authSignUpRoute: authSignUpRoute,
-  errors404Route: errors404Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
