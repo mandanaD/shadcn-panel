@@ -8,10 +8,10 @@ const Container = () => {
     return (
         <SidebarProvider>
             <AppSidebar />
-            <SidebarInset>
+            <SidebarInset className={"max-h-[calc(100vh-1rem)] overflow-y-auto"}>
                 <Header/>
                 <Separator/>
-                <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+                <div className="flex flex-1 flex-col gap-4 overflow-hidden">
                     <Outlet/>
                 </div>
             </SidebarInset>
