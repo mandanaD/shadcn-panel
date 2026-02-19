@@ -8,8 +8,11 @@ import {
     useSidebar,
 } from '@/components/ui/sidebar'
 import {Button} from "@/components/ui/button.tsx";
+import type {Title} from "@/components/layout/sidebar/sidebar.types.ts";
 
-export function AppTitle() {
+export function AppTitle({data}:{
+    data:Title
+}) {
     const {isMobile} = useSidebar()
     return (
         <SidebarMenu>
@@ -22,10 +25,19 @@ export function AppTitle() {
                     <div>
                         <Link
                             to='/'
-                            className='grid flex-1 text-start text-sm leading-tight'
+                            className='flex-1 flex gap-2'
                         >
-                            <span className='truncate font-bold'>Shadcn-Admin</span>
-                            <span className='truncate text-xs'>Vite + ShadcnUI</span>
+                            {
+                                data.logo&&(
+                                    <p className={"my-[1px] bg-primary text-white min-w-8 grid place-content-center rounded-lg"}>
+                                        <data.logo size={16}/>
+                                    </p>
+                                )
+                            }
+                            <div className={"grid text-start text-sm leading-tight"}>
+                                <span className='truncate font-bold'>{data.name}</span>
+                                <span className='truncate text-xs'>{data.plan}</span>
+                            </div>
                         </Link>
                         {
                             isMobile && (
