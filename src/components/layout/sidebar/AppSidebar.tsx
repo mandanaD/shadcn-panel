@@ -8,7 +8,7 @@ const AppSidebar = () => {
     return (
         <Sidebar variant={"inset"}>
             <SidebarHeader>
-                <AppTitle/>
+                <AppTitle data={sidebarData.title}/>
             </SidebarHeader>
             <SidebarContent>
                 {sidebarData.navGroups.map((props) => (
