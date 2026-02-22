@@ -7,7 +7,7 @@ type UserProfile = {
     avatar: string
 }
 
-type Title = {
+export type Title = {
     name: string
     logo: ElementType
     plan: string
